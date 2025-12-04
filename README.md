@@ -8,7 +8,11 @@ Initialize:
 4. Follow the commands in database.sql
 5. Follow the commands in values.sql
 6. Go to localhost/proj/index.html on the browser
+
 Unhashed Passwords of Users:
+
 'admin' for User in admin role
+
 'therapist' for Users in therapist role
+
 'customer' for Users in customer role
