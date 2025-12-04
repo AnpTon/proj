@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Center | Booking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Wellness Center</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="booking.html" class="active">Booking</a>
+                <a href="#" id="loginLink">Login</a>
+                <a href="#" id="registerLink">Register</a>
+                <a href="dashboard.html" id="dashboardLink" style="display:none;">Dashboard</a>
+                <a href="#" id="logoutLink" style="display:none;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Book Your Appointment</h1>
+            <p>Complete the steps below to schedule your wellness session</p>
+        </div>
+    </section>
+
+    <div class="booking-progress">
+        <div class="container">
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Service & Therapist</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Date & Time</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Confirmation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-container">
+        <div class="container">
+            <div class="booking-form-container">
+                <div id="step1" class="booking-step active">
+                    <h2>Select Service & Therapist</h2>
+                    
+                    <div class="form-section">
+                        <h3>Choose a Service</h3>
+                        <div class="services-selection" id="servicesSelection">
+                            <div class="loading">Loading services...</div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Select a Therapist</h3>
+                        <div class="therapists-selection" id="therapistsSelection">
+                            <div class="loading">Loading therapists...</div>
+                        </div>
+                    </div>
+
+                    <div class="summary-panel" id="step1Summary">
+                        <h3>Service Summary</h3>
+                        <div class="summary-content">
+                            <p><strong>Service:</strong> <span id="summaryService">Not selected</span></p>
+                            <p><strong>Therapist:</strong> <span id="summaryTherapist">Not selected</span></p>
+                            <p><strong>Duration:</strong> <span id="summaryDuration">0 mins</span></p>
+                            <p><strong>Price:</strong> <span id="summaryPrice">$0.00</span></p>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button class="btn btn-primary next-step" data-next="2" disabled>Continue to Date & Time</button>
+                    </div>
+                </div>
+
+                <div id="step2" class="booking-step">
+                    <h2>Select Date & Time</h2>
+                    
+                    <div class="form-section">
+                        <h3>Choose a Date</h3>
+                        <input type="text" id="datePicker" placeholder="Select date" class="date-input">
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Available Time Slots</h3>
+                        <div class="time-slots" id="timeSlots">
+                            <p class="select-date-message">Please select a date first</p>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button class="btn btn-secondary prev-step" data-prev="1">Back</button>
+                        <button class="btn btn-primary next-step" data-next="3" disabled>Continue to Confirmation</button>
+                    </div>
+                </div>
+
+                <div id="step3" class="booking-step">
+                    <h2>Confirm Booking</h2>
+                    
+                    <div class="form-section">
+                        <h3>Appointment Summary</h3>
+                        <div class="confirmation-summary" id="confirmationSummary">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Payment Details</h3>
+                        
+                        <div class="promo-section">
+                            <label>Promo Code (Optional)</label>
+                            <div class="promo-input-group">
+                                <input type="text" id="promoCode" placeholder="Enter promo code" class="promo-input">
+                                <button type="button" id="applyPromo" class="btn btn-secondary">Apply</button>
+                            </div>
+                            <p id="promoMessage"></p>
+                        </div>
+
+                        <div class="cost-summary">
+                            <p>Original Price: <span id="originalPrice">$0.00</span></p>
+                            <p>Discount: <span id="discountAmount">$0.00</span></p>
+                            <p class="total-price">Total: <span id="finalPrice">$0.00</span></p>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h4>Select Payment Method</h4>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="cash" checked>
+                                    <span>💵 Cash</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="credit_card">
+                                    <span>💳 Credit Card</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="paypal">
+                                    <span>🔵 PayPal</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="terms-section">
+                            <label class="terms-checkbox">
+                                <input type="checkbox" id="termsAgree">
+                                <span>I agree to the terms and conditions</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button class="btn btn-secondary prev-step" data-prev="2">Back</button>
+                        <button class="btn btn-primary" id="confirmBooking" disabled>Confirm Booking</button>
+                    </div>
+                </div>
+
+                <div id="successMessage" class="success-message" style="display:none;">
+                    <h2>🎉 Booking Successful!</h2>
+                    <p>Your appointment has been confirmed. You'll receive a confirmation email shortly.</p>
+                    <p><strong>Appointment ID:</strong> <span id="bookingId"></span></p>
+                    <div class="success-actions">
+                        <a href="dashboard.html" class="btn btn-primary">View in Dashboard</a>
+                        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wellness Center. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p id="loginMessage"></p>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerName" placeholder="Full Name" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="tel" id="registerPhone" placeholder="Phone Number">
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <select id="registerRole">
+                    <option value="customer">Customer</option>
+                    <option value="therapist">Therapist</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            <p id="registerMessage"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

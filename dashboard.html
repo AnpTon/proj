@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Center | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Wellness Center</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="booking.html">Booking</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="#" id="logoutLink">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>My Dashboard</h1>
+            <p>Manage your appointments and account</p>
+        </div>
+    </section>
+
+    <section class="user-welcome">
+        <div class="container">
+            <div class="welcome-card">
+                <h2 id="welcomeGreeting">Welcome back!</h2>
+                <p><strong>Account Status:</strong> <span class="status-active" id="accountStatus">Active</span></p>
+                <p><strong>Member Since:</strong> <span id="memberSince">Loading...</span></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="dashboard-section">
+                    <h2>Upcoming Appointments</h2>
+                    <div class="appointments-list" id="upcomingAppointments">
+                        <div class="loading">Loading appointments...</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h2>Past Appointments</h2>
+                    <div class="appointments-list" id="pastAppointments">
+                        <div class="loading">Loading past appointments...</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h2>Account Management</h2>
+                    
+                    <div class="form-section">
+                        <h3>Edit Profile</h3>
+                        <form id="editProfileForm">
+                            <input type="text" id="editFullName" placeholder="Full Name" required>
+                            <input type="email" id="editEmail" placeholder="Email" required>
+                            <input type="tel" id="editPhone" placeholder="Phone Number">
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                        <p id="profileMessage"></p>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Change Password</h3>
+                        <form id="changePasswordForm">
+                            <input type="password" id="currentPassword" placeholder="Current Password" required>
+                            <input type="password" id="newPassword" placeholder="New Password" required>
+                            <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                        </form>
+                        <p id="passwordMessage"></p>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p><strong>Email:</strong> <span id="contactEmail">Loading...</span></p>
+                        <p><strong>Phone:</strong> <span id="contactPhone">Loading...</span></p>
+                        <p><strong>Account Type:</strong> <span id="contactRole">Loading...</span></p>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h2>Promotions & Rewards</h2>
+                    
+                    <div class="promotions-list" id="promotionsList">
+                        <div class="loading">Loading promotions...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Leave a Review</h2>
+            <form id="reviewForm">
+                <input type="hidden" id="reviewAppointmentId">
+                <div class="rating-stars">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
+                </div>
+                <input type="hidden" id="reviewRating" value="5">
+                <textarea id="reviewComment" placeholder="Share your experience..." rows="4"></textarea>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+            <p id="reviewMessage"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wellness Center. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
